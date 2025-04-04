@@ -1,0 +1,43 @@
+.sidenav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20.357rem; /* 285px */
+  height: 100vh;
+  background: white;
+  border-right: 0.071rem solid #E6EDFF; /* 1px */
+  padding: 1.5rem;
+}
+
+.logo-container {
+  padding: 1rem 0 2rem;
+  text-align: center;
+}
+
+.logo {
+  max-width: 180px;
+  height: auto;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  color: #7C8DB5;
+  font-size: 1.143rem; /* 16px */
+  text-decoration: none;
+  margin-bottom: 0.5rem;
+  position: relative;
+  margin-right: -1.5rem;
+}
+
+.nav-item.active {
+  color: #347AE2;
+  background: none;
+  border-right: 0.286rem solid #347AE2; /* 4px */
+}
+
+.nav-icon {
+  margin-right: 0.857rem; /* 12px */
+  width: 1.429rem; /* 20px */
+} 

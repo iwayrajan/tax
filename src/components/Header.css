@@ -1,0 +1,78 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 20.357rem; /* 285px */
+  right: 0;
+  background: white;
+  padding: 2.143rem 2.857rem; /* 30px 40px */
+  z-index: 1000;
+  box-shadow: 0 0.071rem 0.357rem rgba(0, 0, 0, 0.05); /* Adding subtle shadow to separate header */
+}
+
+/* Override Bootstrap's container-fluid padding */
+.header .container-fluid {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.header-left {
+  flex: 1;
+}
+
+.header-titles h1 {
+  margin: 0;
+  font-size: 2rem; /* 28px */
+  color: black;
+  font-weight: 600;
+}
+
+.header-titles p {
+  margin: 0;
+  font-size: 1.143rem; /* 16px */
+  color: #7C8DB5;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.icon-button {
+  background: none;
+  border: none;
+  color: var(--color-primary);
+  font-size: 20px;
+  padding: 0.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-dropdown {
+  background: none !important;
+  border: none !important;
+  color: var(--color-primary) !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem;
+  padding: 0.5rem !important;
+  height: auto !important;
+}
+
+.dropdown-arrow {
+  font-size: 1rem; /* 14px */
+  margin-left: 0.286rem; /* 4px */
+}
+
+.user-dropdown::after {
+  display: none !important;
+}
+
+.avatar {
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  color: var(--color-primary);
+} 

@@ -1,0 +1,21 @@
+.layout {
+  min-height: 100vh;
+  display: flex;
+}
+
+.layout-content {
+  margin-left: 20.357rem; /* 285px */
+  width: calc(100% - 20.357rem); /* 285px */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+}
+
+.main-content {
+  padding: 9rem 2.857rem 2rem 2.857rem; /* Increased top padding from 7rem to 9rem */
+  background: white;
+  flex: 1;
+  position: relative;
+  z-index: 1;
+} 

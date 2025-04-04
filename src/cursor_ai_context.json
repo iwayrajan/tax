@@ -1,0 +1,67 @@
+{
+    "name": "cursor_ai_composer",
+    "description": "Context configuration for Cursor AI Composer project.",
+    "instructions": [
+        "You already have React installed.",
+        "You can also install react-bootstrap for components and styling.",
+        "Use rems for font sizes.",
+        "Font family: Poppins.",
+        "Base font size: 14px.",
+        "Base screen size: 1400px.",
+        "Pages should be responsive."
+    ],
+    "pages": {
+        "login": {
+            "route": "/login",
+            "background": "#E5EDF8",
+            "box_style": {
+                "background": "#F5F7FA",
+                "max_width": "552px"
+            },
+            "title": "Login",
+            "inputs": {
+                "username": {
+                    "placeholder": "Username",
+                    "background": "white",
+                    "border": "1px solid #E6E6E6",
+                    "icon": "avatar",
+                    "color": "#968D8D"
+                },
+                "password": {
+                    "placeholder": "Password",
+                    "background": "white",
+                    "border": "1px solid #E6E6E6",
+                    "icon": "lock",
+                    "color": "#968D8D"
+                }
+            },
+            "forgot_password_link": {
+                "alignment": "right",
+                "color": "#3515FF"
+            },
+            "login_button": {
+                "width": "match inputs",
+                "background": "#3515FF",
+                "text_color": "white"
+            }
+        },
+        "dashboard": {
+            "route": "/dashboard",
+            "header": "Included",
+            "footer": "Included",
+            "sidenav": "Included"
+        },
+        "aboutus": {
+            "route": "/aboutus",
+            "header": "Included",
+            "footer": "Included",
+            "sidenav": "Included"
+        },
+        "notfound": {
+            "route": "/notfound",
+            "header": "Included",
+            "footer": "Included",
+            "sidenav": "Included"
+        }
+    }
+}
