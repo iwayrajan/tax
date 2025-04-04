@@ -7,6 +7,7 @@ import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import AboutUs from './pages/AboutUs';
 import NotFound from './pages/NotFound';
+import ResetPassword from './pages/ResetPassword';
 
 // Import components
 import ProtectedRoute from './components/ProtectedRoute';
@@ -18,6 +19,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/login" element={<Login />} />
+          <Route path="/resetpassword" element={<ResetPassword />} />
           <Route
             path="/dashboard"
             element={
