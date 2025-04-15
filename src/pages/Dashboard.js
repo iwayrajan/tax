@@ -45,7 +45,7 @@ function Dashboard() {
       formPayload.append('start_date', formData.startDate);
       formPayload.append('end_date', formData.endDate);
 
-      const response = await axios.post('http://13.126.14.135:8000/upload-gst-csv', formPayload, {
+      const response = await axios.post('http://api.audithive.in/upload-gst-csv', formPayload, {
         headers: {
           'Content-Type': 'multipart/form-data',
           'Authorization': `Bearer ${localStorage.getItem('access_token')}`

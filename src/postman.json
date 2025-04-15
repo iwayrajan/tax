@@ -25,15 +25,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://13.126.14.135:8000/login/",
+					"raw": "http://api.audithive.in/login/",
 					"protocol": "http",
 					"host": [
-						"13",
-						"126",
-						"14",
-						"135"
+						"api",
+						"audithive",
+						"in"
 					],
-					"port": "8000",
 					"path": [
 						"login",
 						""
@@ -60,15 +58,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://13.126.14.135:8000/forgot-password/",
+					"raw": "http://api.audithive.in/forgot-password/",
 					"protocol": "http",
 					"host": [
-						"13",
-						"126",
-						"14",
-						"135"
+						"api",
+						"audithive",
+						"in"
 					],
-					"port": "8000",
 					"path": [
 						"forgot-password",
 						""
@@ -103,15 +99,13 @@
 					]
 				},
 				"url": {
-					"raw": "http://13.126.14.135:8000/upload-gst-csv/",
+					"raw": "http://api.audithive.in/upload-gst-csv/",
 					"protocol": "http",
 					"host": [
-						"13",
-						"126",
-						"14",
-						"135"
+						"api",
+						"audithive",
+						"in"
 					],
-					"port": "8000",
 					"path": [
 						"upload-gst-csv",
 						""
