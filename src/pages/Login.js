@@ -8,39 +8,69 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { authService } from '../services/auth.service';
 import './Login.css';
 
 function Login() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
   const [isForgotPassword, setIsForgotPassword] = useState(false);
   const navigate = useNavigate();
   const { login } = useAuth();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     setError('');
+    setLoading(true);
 
-    if (username === 'admin' && password === 'admin') {
-      login();
-      navigate('/dashboard', { replace: true });
-    } else {
-      setError('Invalid username or password');
+    try {
+      const response = await authService.login({
+        email,
+        password
+      });
+
+      // Store tokens and user data
+      if (response.access_token && response.refresh_token && response.user) {
+        localStorage.setItem('access_token', response.access_token);
+        localStorage.setItem('refresh_token', response.refresh_token);
+        localStorage.setItem('user', JSON.stringify(response.user));
+        
+        // Update auth context with user data
+        login(response.user);
+        
+        navigate('/dashboard', { replace: true });
+      } else {
+        setError('Invalid response from server');
+      }
+    } catch (err) {
+      console.error('Login error:', err);
+      setError(err.response?.data?.message || 'Invalid email or password');
+    } finally {
+      setLoading(false);
     }
   };
 
-  const handleForgotPassword = (e) => {
+  const handleForgotPassword = async (e) => {
     e.preventDefault();
     setError('');
+    setLoading(true);
     
-    if (email) {
-      // Handle forgot password logic here
-      alert('Password reset link has been sent to your email');
+    try {
+      await authService.forgotPassword({ email });
+      alert('Password reset instructions have been sent to your email');
       setIsForgotPassword(false);
-    } else {
-      setError('Please enter your email');
+    } catch (err) {
+      console.error('Forgot password error:', err);
+      // Handle the specific error format from the API
+      if (err.response?.data?.email?.[0]) {
+        setError(err.response.data.email[0]);
+      } else {
+        setError('Error sending reset instructions. Please try again.');
+      }
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -65,11 +95,12 @@ function Login() {
                   </span>
                 </div>
                 <Form.Control
-                  type="text"
-                  placeholder="Username"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
+                  type="email"
+                  placeholder="Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   className="form-input"
+                  required
                 />
               </Form.Group>
 
@@ -85,6 +116,7 @@ function Login() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   className="form-input"
+                  required
                 />
               </Form.Group>
 
@@ -102,8 +134,12 @@ function Login() {
                 </a>
               </div>
 
-              <Button type="submit" className="w-100 login-button">
-                Login Now
+              <Button 
+                type="submit" 
+                className="w-100 login-button"
+                disabled={loading}
+              >
+                {loading ? 'Logging in...' : 'Login Now'}
               </Button>
             </Form>
           ) : (
@@ -120,6 +156,7 @@ function Login() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="form-input"
+                  required
                 />
               </Form.Group>
 
@@ -137,8 +174,12 @@ function Login() {
                 </a>
               </div>
 
-              <Button type="submit" className="w-100 login-button">
-                Submit
+              <Button 
+                type="submit" 
+                className="w-100 login-button"
+                disabled={loading}
+              >
+                {loading ? 'Submitting...' : 'Submit'}
               </Button>
             </Form>
           )}

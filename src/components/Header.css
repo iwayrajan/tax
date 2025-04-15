@@ -6,7 +6,6 @@
   background: white;
   padding: 2.143rem 2.857rem; /* 30px 40px */
   z-index: 1000;
-  box-shadow: 0 0.071rem 0.357rem rgba(0, 0, 0, 0.05); /* Adding subtle shadow to separate header */
 }
 
 /* Override Bootstrap's container-fluid padding */

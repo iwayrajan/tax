@@ -16,11 +16,32 @@ import './Header.css';
 function Header() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const navigate = useNavigate();
-  const { logout } = useAuth();
+  const { logout, user } = useAuth();
 
   const handleLogout = () => {
     logout();
     navigate('/login');
+  };
+
+  const capitalizeWord = (str) => {
+    if (!str) return '';
+    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+  };
+
+  const getFirstName = () => {
+    if (!user) return 'Guest';
+    if (user.first_name) return capitalizeWord(user.first_name);
+    if (user.username) return capitalizeWord(user.username);
+    return capitalizeWord(user.email.split('@')[0]);
+  };
+
+  const getFullName = () => {
+    if (!user) return 'Guest';
+    if (user.first_name && user.last_name) {
+      return `${capitalizeWord(user.first_name)} ${capitalizeWord(user.last_name)}`;
+    }
+    if (user.username) return capitalizeWord(user.username);
+    return user.email;
   };
 
   return (
@@ -28,7 +49,7 @@ function Header() {
       <Container fluid>
         <div className="header-left">
           <div className="header-titles">
-            <h1>Welcome Back, Admin</h1>
+            <h1>Welcome Back, {getFirstName()}</h1>
             <p>Here is the information about all your orders</p>
           </div>
         </div>
@@ -46,7 +67,7 @@ function Header() {
           >
             <Dropdown.Toggle className="user-dropdown">
               <FontAwesomeIcon icon={faUser} className="avatar" />
-              <span>Admin</span>
+              <span>{getFullName()}</span>
               <FontAwesomeIcon 
                 icon={isDropdownOpen ? faChevronUp : faChevronDown} 
                 className="dropdown-arrow"
